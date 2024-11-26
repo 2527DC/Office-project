@@ -8,6 +8,8 @@ const API_ENDPOINTS = {
   BOOK_NOW: `${BASE_URL}/book-now`,
   BOOKING_HISTORY: `${BASE_URL}/user/ride-history`,
   CANCLE_BOOKING: `${BASE_URL}/cancel-booking`,
+
+  GOOGLE_KEY:"AIzaSyCI7CwlYJ6Qt5pQGW--inSsJmdEManW-K0"
 };
 
 export default API_ENDPOINTS;

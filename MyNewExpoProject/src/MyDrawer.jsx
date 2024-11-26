@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
@@ -7,19 +7,21 @@ import BookingHistory from './screens/BookingHistory';
 import Reviews from './screens/Reviews';
 import Schedule from './screens/Schedule';
 
+// Create Drawer Navigator
 const Drawer = createDrawerNavigator();
 
+// Custom Drawer Content
 const CustomDrawerContent = (props) => {
   return (
     <DrawerContentScrollView {...props}>
       {/* Custom Header */}
-      <View style={styles.header}>
+      <View className="bg-gray-100 p-5 items-center border-b border-gray-300 mb-2">
         <Image
           source={{ uri: 'https://via.placeholder.com/100' }} // Replace with your image URL
-          style={styles.profileImage}
+          className="w-20 h-20 rounded-full mb-2"
         />
-        <Text style={styles.username}>John Doe</Text>
-        <Text style={styles.email}>johndoe@example.com</Text>
+        <Text className="text-lg font-bold mb-1">John Doe</Text>
+        <Text className="text-sm text-gray-500">johndoe@example.com</Text>
       </View>
       
       {/* Default Drawer Items */}
@@ -28,6 +30,7 @@ const CustomDrawerContent = (props) => {
   );
 };
 
+// Drawer Navigator
 const MyDrawer = () => {
   return (
     <Drawer.Navigator
@@ -39,34 +42,8 @@ const MyDrawer = () => {
       <Drawer.Screen name="BookingHistory" component={BookingHistory} />
       <Drawer.Screen name="Schedule" component={Schedule} />
       <Drawer.Screen name="Reviews" component={Reviews} />
-
     </Drawer.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#f4f4f4',
-    padding: 20,
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  profileImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    marginBottom: 10,
-  },
-  username: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  email: {
-    fontSize: 14,
-    color: 'gray',
-  },
-});
 
 export default MyDrawer;

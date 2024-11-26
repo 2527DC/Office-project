@@ -11,12 +11,14 @@ const Login = ({navigation}) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   
 
+  const {setAllUserData} = useAppContext();
+
   // const { setAllUserData } = useAppContext(); // Access the setAllUserData method from the context
 
   // Function to handle login
   const handleLogin = async () => {
-    navigation.navigate('Main')
       // Navigate to the DrawerNavigator on successful login
+    navigation.navigate('Main')
       
     // try {
     //   // Prepare login data
@@ -52,7 +54,8 @@ const Login = ({navigation}) => {
     //     });
 
     //     // Navigate to the DrawerNavigator on successful login
-    //     
+    // navigation.navigate('Main')
+        
     //   } else {
     //     // Show error message if login failed
     //     Alert.alert('Login Failed', response.data.message || 'An error occurred');
