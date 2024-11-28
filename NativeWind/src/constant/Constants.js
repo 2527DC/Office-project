@@ -6,7 +6,7 @@ const API_ENDPOINTS = {
   REGISTER: `${BASE_URL}/user-registration`,
   LOGIN: `${BASE_URL}/user-login`,
   BOOK_NOW: `${BASE_URL}/book-now`,
-  BOOKING_HISTORY: `${BASE_URL}/user/ride-history`,
+  BOOKING_HISTORY: `${BASE_URL}/ride-history`,
   CANCLE_BOOKING: `${BASE_URL}/cancel-booking`,
 
   GOOGLE_KEY:"AIzaSyCI7CwlYJ6Qt5pQGW--inSsJmdEManW-K0"
