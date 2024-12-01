@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "E4E4B9DF-EC09-4B14-96BB-E78A6FC4CCF8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:NativeWind.xcodeproj",
+      "identifier" : "13B07F861A680F5B00A75B9A",
+      "name" : "NativeWind"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:NativeWind.xcodeproj",
+        "identifier" : "00E356ED1AD99517003FC87E",
+        "name" : "NativeWindTests"
+      }
+    }
+  ],
+  "version" : 1
+}

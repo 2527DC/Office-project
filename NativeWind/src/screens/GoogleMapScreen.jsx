@@ -17,7 +17,7 @@ const GoogleMapScreen = () => {
       >
         {/* Example Marker */}
         <Marker coordinate={{ latitude: 37.78825, longitude: -122.4324 }} />
-      </MapView>
+      </MapView>  
 
       {/* Button at the Mid-Right */}
       <TouchableOpacity

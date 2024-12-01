@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API_ENDPOINTS from '../constant/Constants'; // Adjust the path if necessary
@@ -8,6 +8,7 @@ const BookingHistory = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+ 
   useEffect(() => {
     // API call to fetch booking history
     const fetchBookingHistory = async () => {
@@ -41,70 +42,66 @@ const BookingHistory = () => {
 
   if (loading) {
     return (
-      <View style={styles.centered}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>Loading...</Text>
-      </View>
+      <View className="flex-1 justify-center items-center bg-gray-100">
+      <ActivityIndicator size="large" color="#0000ff" />
+      <Text className="text-lg text-gray-700 mt-2">Loading...</Text>
+    </View>
     );
   }
 
   if (error) {
     return (
-      <View style={styles.centered}>
-        <Text>{error}</Text>
+      <View className="flex-1 justify-center items-center bg-gray-100">
+        <Text className="text-lg text-red-500">{error}</Text>
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
+   
+   
+    <View >
      
       <FlatList
         data={bookingHistory}
         keyExtractor={(item) => item.booking_id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.bookingItem}>
-            <Text style={styles.bookingText}>Booking ID: {item.booking_id}</Text>
-            <Text style={styles.bookingText}>Date: {item.book_date}</Text>
-            <Text style={styles.bookingText}>Time: {item.book_time}</Text>
-            <Text style={styles.bookingText}>Source: {item.source_address}</Text>
-            <Text style={styles.bookingText}>Destination: {item.dest_address}</Text>
-            <Text style={styles.bookingText}>Status: {item.ride_status}</Text>
-            <Text style={styles.bookingText}>Distance: {item.total_kms || 'N/A'}</Text>
-            <Text style={styles.bookingText}>Driving Time: {item.driving_time || 'N/A'}</Text>
-          </View>
+          
+           <View className="bg-blue-700 w-[350px] p-4 rounded-lg shadow-md">
+      
+           {/* Date and Time Row */}
+           <View className="flex-row justify-between mb-2">
+             <Text className="text-[16px] font-bold text-white">Date: {item.book_date}</Text>
+             <Text className="text-md font-bold text-white">Time: {item.book_time}</Text>
+           </View>
+     
+           {/* Source and Destination */}
+           <Text className="text-[16px] font-bold text-white mb-2">
+             Source:{item.ride_status}
+           </Text>
+           <Text className="text-[16px] font-bold text-white mb-2">
+             Destination: {item.dest_address} </Text>
+     
+           {/* Status */}
+           <Text className="text-md font-bold text-white mb-2">
+             Time: 09:08 PM
+           </Text>
+     
+           <View className="flex-row justify-between items-center">
+             <Text className="text-lg font-bold text-white">Status: Cancelled</Text>
+             <TouchableOpacity className='bg-red-500'>
+               <Text className="text-lg text-white font-bold">Cancel</Text>
+             </TouchableOpacity>
+           </View>
+         </View>
         )}
-      />
+      /> 
     </View>
+
+    
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-  bookingItem: {
-    marginBottom: 16,
-    padding: 10,
-    backgroundColor: '#f9f9f9',
-    borderRadius: 8,
-    borderColor: '#ddd',
-    borderWidth: 1,
-  },
-  bookingText: {
-    fontSize: 16,
-    marginBottom: 4,
-  },
-  centered: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+
 
 export default BookingHistory;

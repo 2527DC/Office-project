@@ -5,6 +5,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import API_ENDPOINTS from '../constant/Constants';
 import { useAppContext } from '../Store/AppContext';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -69,53 +70,55 @@ const Login = ({navigation}) => {
 
   return (
     <SafeAreaProvider>
-    <View className="flex-1 justify-center items-center p-4 bg-gray-100">
-      <View className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
-        <Text className="text-3xl font-semibold mb-6 text-center">Login</Text>
+      <LinearGradient
+        colors={['white','white']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        className="flex-1 justify-center items-center " // Ensure the gradient takes full height
+      >
+        <View className="bg-white p-6 rounded-lg shadow-lg w-[350] max-w-sm">
+          <Text className="text-3xl font-semibold mb-6 text-center">Login</Text>
 
-        <View className="w-full mb-4">
-          <TextInput
-            className="border p-3 rounded-lg text-base"
-            placeholder="Email"
-            value={email}
-            onChangeText={setEmail}
-          />
-        </View>
+          <View className="w-full mb-4">
+            <TextInput
+              className="border p-3 rounded-lg text-base"
+              placeholder="Email"
+              value={email}
+              onChangeText={setEmail}
+            />
+          </View>
 
-        <View className="w-full mb-4 relative">
-          <TextInput
-            className="border p-3 rounded-lg text-base"
-            placeholder="Password"
-            secureTextEntry={!isPasswordVisible}
-            value={password}
-            onChangeText={setPassword}
-          />
+          <View className="w-full mb-4 relative">
+            <TextInput
+              className="border p-3 rounded-lg text-base"
+              placeholder="Password"
+              secureTextEntry={!isPasswordVisible}
+              value={password}
+              onChangeText={setPassword}
+            />
+            <TouchableOpacity
+              onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+              className="absolute right-3 top-3"
+            >
+              <Text className="text-blue-500">{isPasswordVisible ? 'Hide' : 'Show'}</Text>
+            </TouchableOpacity>
+          </View>
+
           <TouchableOpacity
-            onPress={() => setIsPasswordVisible(!isPasswordVisible)}
-            className="absolute right-3 top-3"
+            onPress={handleLogin} // Trigger the login function
+            className="bg-blue-500 w-full py-3 rounded-lg mb-4"
           >
-            <Text className="text-blue-500">{isPasswordVisible ? 'Hide' : 'Show'}</Text>
+            <Text className="text-white text-center text-lg">Login</Text>
           </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity
-          onPress={handleLogin} // Trigger the login function
-          className="bg-blue-500 w-full py-3 rounded-lg mb-4"
-        >
-          <Text className="text-white text-center text-lg">Login</Text>
-        </TouchableOpacity>
 
           <Text className="text-blue-500 mb-4 text-center"  onPress={()=>navigation.navigate('ForgotPassword')} >Forgot Password?</Text>
- 
 
-        <Text className="text-sm">
-          Don't have an account?{' '}
-          
+          <Text className="text-sm">
+            Don't have an account?{' '}
             <Text className="text-blue-500 text-lg" onPress={()=>navigation.navigate('Register')}>Register</Text>
-        
-        </Text>
-      </View>
-    </View>
+          </Text>
+        </View>
+      </LinearGradient>
     </SafeAreaProvider>
   );
 };

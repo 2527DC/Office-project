@@ -5,34 +5,34 @@ export default function ProfileScreen() {
   const [nameChange, setNameChange] = useState(false);
 
   return (
-    <ScrollView className="flex-1 bg-gray-100">
-      <View className="p-5">
+    <ScrollView className="flex-1 ">
+      <View className="p-5 ">
         {/* Profile Header */}
-        <View className="mb-4 rounded-2xl bg-white shadow-md">
+        <View className="mb-4 rounded-2xl bg-blue-400 shadow-md">
           <View className="items-center p-6">
             <Image
-              source={require('../assects/image/images.jpg')} // Replace with your image path
-              className="w-[96px] h-[80px] rounded-full border-4 border-blue-500"
+              source={require('../assets/image/images.jpg')} // Replace with your image path
+              className="w-[96px] h-[80px] rounded-full border-4 border-white"
             />
-            <TouchableOpacity className="mt-3 py-2 px-4 border border-blue-500 rounded-full">
-              <Text className="text-blue-500 text-center">Upload Photo</Text>
+            <TouchableOpacity className="mt-3 py-2 px-4 border border-white rounded-full">
+              <Text className="text-white font-bold text-center">Upload Photo</Text>
             </TouchableOpacity>
           </View>
         </View>
 
         {/* Personal Info */}
-        <View className="mb-4 rounded-2xl bg-white shadow-md">
-          <View className="p-5">
-            <Text className="text-lg font-bold text-gray-800 mb-4">Personal Information</Text>
+        <View className="mb-4 rounded-2xl  shadow-md">
+          <View className="p-5 bg-blue-100 ">
+            <Text className="text-xl font-bold text-gray-800 mb-4">Personal Information</Text>
 
             {/* Name Section */}
             <View className="flex-row justify-between items-center mb-4">
               <View className="flex-1">
-                <Text className="text-sm text-gray-600">Full Name</Text>
+                <Text className="text-md text-gray-600">Full Name</Text>
                 <Text className="text-base text-gray-800 mt-1">John Doe</Text>
               </View>
               <TouchableOpacity onPress={() => setNameChange(!nameChange)}>
-                <Text className="text-blue-500 underline">Edit</Text>
+                <Text className="text-blue-500 font-bold underline">Edit</Text>
               </TouchableOpacity>
             </View>
 
