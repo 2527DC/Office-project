@@ -1,7 +1,4 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-
-
 // Import SafeAreaProvider
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Login from './src/screens/LoginScreen';
@@ -11,10 +8,15 @@ import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import MyDrawer from './src/MyDrawer';
 import { AppProvider } from './src/Store/AppContext';
+import 'react-native-get-random-values'; // used for the googleautocomplete places
 
 
 const Stack = createNativeStackNavigator();
 function App() {
+
+
+
+  
   return (
     // Wrap your app in SafeAreaProvider for handling safe areas
     <SafeAreaProvider>
