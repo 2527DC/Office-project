@@ -7,8 +7,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import MyDrawer from './src/MyDrawer';
-import { AppProvider } from './src/Store/AppContext';
+
 import 'react-native-get-random-values'; // used for the googleautocomplete places
+import { AppProvider } from './src/Store/AppContext';
 
 
 const Stack = createNativeStackNavigator();

@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { Alert } from 'react-native';
+import Geolocation from '@react-native-community/geolocation';
 
 // Create Context
 const AppContext = createContext();
@@ -22,6 +24,9 @@ export const AppProvider = ({ children }) => {
     user_id: '',
   });
 
+  // State to store location
+  const [location, setLocation] = useState(null);
+
   // Method to update specific user data field
   const updateUserData = (key, value) => {
     setUserData((prev) => ({
@@ -35,7 +40,7 @@ export const AppProvider = ({ children }) => {
     setUserData(data);
   };
 
-  // Method to get a specific field value
+  // Method to get a specific field value from user data
   const getUserData = (key) => {
     return userData[key] || null; // Return the value or null if not found
   };
@@ -54,6 +59,30 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  // Method to get the current location
+  const getCurrentLocation = () => {
+    Geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setLocation({ latitude, longitude });
+
+        // Log latitude and longitude
+        console.log('Latitude:', latitude);
+        console.log('Longitude:', longitude);
+      },
+      (error) => {
+        console.error(error);
+        Alert.alert('Error', 'Unable to fetch location.');
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+    );
+  };
+
+  useEffect(() => {
+    // Automatically fetch location when the app loads
+    getCurrentLocation();
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -62,6 +91,7 @@ export const AppProvider = ({ children }) => {
         setAllUserData,
         getUserData,
         clearUserData,
+        location, // Provide location data
       }}
     >
       {children}
